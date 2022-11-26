@@ -15,6 +15,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 
+vim.cmd([[
+  let test#javascript#jest#file_pattern = '\vtest?/.*\.(js|jsx|coffee)$'
+  let test#javascript#jest#executable = 'npm run test'
+]])
+
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
   augroup packer_user_config
@@ -57,12 +62,12 @@ return packer.startup(function(use)
 
 	-- Colorschemes
   use { "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" }
-  use { "lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83" }
   use { "EdenEast/nightfox.nvim" }
 
   -- Comfort
   use { "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" } -- Autopairs, integrates with both cmp and treesitter
   use { "tpope/vim-surround" }
+  use { "vim-test/vim-test" }
 
 	-- Cmp 
   use { "hrsh7th/nvim-cmp", commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc" } -- The completion plugin
@@ -85,6 +90,10 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use { "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+  -- Text Search
+  use { "rking/ag.vim" }
 
 	-- Treesitter
 	use {
