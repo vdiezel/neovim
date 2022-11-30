@@ -15,10 +15,17 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 
+-- Set test command for javascript to use local jest package
 vim.cmd([[
   let test#javascript#jest#file_pattern = '\vtest?/.*\.(js|jsx|coffee)$'
   let test#javascript#jest#executable = 'npm run test'
 ]])
+
+-- Remove trailing white spaces on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
