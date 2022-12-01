@@ -21,11 +21,20 @@ vim.cmd([[
   let test#javascript#jest#executable = 'npm run test'
 ]])
 
+-- Set test command to run in terminal, not within neovim
+
+-- vim.cmd([[let test#strategy = "dispatch"]])
+
 -- Remove trailing white spaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   command = [[%s/\s\+$//e]],
 })
+
+-- markers for the root directory
+vim.cmd([[
+  let g:rooter_patterns = ['.git']
+]])
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
@@ -75,6 +84,8 @@ return packer.startup(function(use)
   use { "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" } -- Autopairs, integrates with both cmp and treesitter
   use { "tpope/vim-surround" }
   use { "vim-test/vim-test" }
+  use { "airblade/vim-rooter" } -- prevents telescope to change the lookup path
+  -- use { "tpope/vim-dispatch" }
 
 	-- Cmp
   use { "hrsh7th/nvim-cmp", commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc" } -- The completion plugin
