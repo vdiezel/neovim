@@ -32,8 +32,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- markers for the root directory
+-- vim.cmd([[
+--   let g:rooter_patterns = ['.git']
+-- ]])
 vim.cmd([[
-  let g:rooter_patterns = ['.git']
+  set rtp+=~/.fzf
 ]])
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -79,12 +82,13 @@ return packer.startup(function(use)
 	-- Colorschemes
   use { "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" }
   use { "EdenEast/nightfox.nvim" }
+  use { "sainnhe/everforest"}
 
   -- Comfort
   use { "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" } -- Autopairs, integrates with both cmp and treesitter
   use { "tpope/vim-surround" }
   use { "vim-test/vim-test" }
-  use { "airblade/vim-rooter" } -- prevents telescope to change the lookup path
+  -- use { "airblade/vim-rooter" } -- prevents telescope to change the lookup path
   -- use { "tpope/vim-dispatch" }
 
 	-- Cmp
@@ -107,8 +111,9 @@ return packer.startup(function(use)
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" }
 
 	-- Telescope
-	use { "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+	-- use { "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" }
+  -- use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { "junegunn/fzf.vim" }
 
   -- Text Search
   use { "rking/ag.vim" }
