@@ -43,9 +43,12 @@ nvim_tree.setup {
       },
     },
   },
+  git = {
+    ignore = false,
+  },
   diagnostics = {
-    enable = true,
-    show_on_dirs = true,
+    enable = false,
+    show_on_dirs = false,
     icons = {
       hint = "",
       info = "",
@@ -53,13 +56,16 @@ nvim_tree.setup {
       error = "",
     },
   },
+  filters = {
+    dotfiles = false,
+  },
   view = {
     width = 30,
     side = "left",
     mappings = {
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
+        { key = "h", cb = tree_cb "split" },
         { key = "v", cb = tree_cb "vsplit" },
       },
     },

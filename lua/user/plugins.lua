@@ -32,9 +32,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- markers for the root directory
--- vim.cmd([[
---   let g:rooter_patterns = ['.git']
--- ]])
+vim.cmd([[
+  function! s:find_git_root()
+    return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+  endfunction
+
+  command! ProjectFiles execute 'GFiles' s:find_git_root()
+]])
 vim.cmd([[
   set rtp+=~/.fzf
 ]])
