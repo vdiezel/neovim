@@ -66,6 +66,7 @@ packer.init({
 	},
 })
 
+
 -- Install your plugins here
 return packer.startup(function(use)
   use { "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" } -- Have packer manage itself
@@ -85,6 +86,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
   use { "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" }
+  use { "mcchrish/zenbones.nvim" }
 
   -- Comfort
   use { "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" } -- Autopairs, integrates with both cmp and treesitter
