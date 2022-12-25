@@ -122,6 +122,9 @@ return packer.startup(function(use)
   -- Text Search
   use { "rking/ag.vim" }
 
+  -- replace
+  use { "windwp/nvim-spectre" }
+
 	-- Treesitter
 	use {
 		"nvim-treesitter/nvim-treesitter",
@@ -130,6 +133,9 @@ return packer.startup(function(use)
 
 	-- Git
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" }
+
+  -- Lua
+  use { "~/.config/nvim/lua/user/custom_plugins/todo.nvim", as = "todo"}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

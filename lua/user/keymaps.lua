@@ -78,3 +78,14 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 ]]
+
+-- replace across files with spectre
+vim.cmd[[
+  nnoremap <leader>S <cmd>lua require('spectre').open()<CR>
+]]
+
+-- Playing around
+vim.cmd[[
+  nnoremap <leader>N <cmd>lua require('todo').open_todo()<CR>
+  command! -nargs=1 AddToDo lua require('todo').add_todo(<args>)
+]]
