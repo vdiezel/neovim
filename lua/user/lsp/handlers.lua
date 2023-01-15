@@ -5,6 +5,28 @@ if not status_cmp_ok then
 	return
 end
 
+-- print diagnoistics in window (I don't like virtual text)
+
+function PrintDiagnostics(opts, bufnr, line_nr, client_id)
+  bufnr = bufnr or 0
+  line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
+  opts = opts or {['lnum'] = line_nr}
+
+  local line_diagnostics = vim.diagnostic.get(bufnr, opts)
+  if vim.tbl_isempty(line_diagnostics) then return end
+
+  local diagnostic_message = ""
+  for i, diagnostic in ipairs(line_diagnostics) do
+    diagnostic_message = diagnostic_message .. string.format("%d: %s", i, diagnostic.message or "")
+    print(diagnostic_message)
+    if i ~= #line_diagnostics then
+      diagnostic_message = diagnostic_message .. "\n"
+    end
+  end
+  vim.api.nvim_echo({{diagnostic_message, "Normal"}}, false, {})
+end
+vim.cmd [[ autocmd! CursorHold * lua PrintDiagnostics() ]]
+
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
@@ -23,7 +45,7 @@ M.setup = function()
 	end
 
 	local config = {
-		virtual_text = true, -- disable virtual text
+		virtual_text = false, -- disable virtual text
 		signs = {
 			active = signs, -- show signs
 		},
