@@ -25,7 +25,9 @@ function PrintDiagnostics(opts, bufnr, line_nr, client_id)
   end
   vim.api.nvim_echo({{diagnostic_message, "Normal"}}, false, {})
 end
-vim.cmd [[ autocmd! CursorHold * lua PrintDiagnostics() ]]
+vim.cmd [[
+  nnoremap <leader>E <cmd>lua PrintDiagnostics()<CR>
+]]
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
