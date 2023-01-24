@@ -15,22 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 
--- Set test command for javascript to use local jest package
-vim.cmd([[
-  let test#javascript#jest#file_pattern = '\vtest?/.*\.(js|jsx|coffee)$'
-  let test#javascript#jest#executable = 'npm run test'
-]])
-
--- Set test command to run in terminal, not within neovim
-
--- vim.cmd([[let test#strategy = "dispatch"]])
-
--- Remove trailing white spaces on save
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = [[%s/\s\+$//e]],
-})
-
 -- markers for the root directory
 vim.cmd([[
   function! s:find_git_root()
