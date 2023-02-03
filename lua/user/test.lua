@@ -6,7 +6,7 @@ vim.cmd([[
 
 -- Set test command to run in terminal, not within neovim
 
-vim.cmd([[let test#strategy = "dispatch"]])
+-- vim.cmd([[let test#strategy = "dispatch"]])
 
 -- Remove trailing white spaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {

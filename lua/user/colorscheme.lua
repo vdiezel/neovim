@@ -1,6 +1,6 @@
---vim.cmd([[
---  set background=light
---]])
+-- vim.cmd([[
+--   set background=light
+-- ]])
 
 local colorscheme = "gruvbox"
 
