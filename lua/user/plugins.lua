@@ -125,6 +125,12 @@ return packer.startup(function(use)
   -- Lua
   use { "~/.config/nvim/lua/user/custom_plugins/todo.nvim", as = "todo"}
 
+  -- gistory
+  use { "vdiezel/gistory.nvim" }
+
+  -- C++
+  use { "bfrg/vim-cpp-modern" }
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
