@@ -1,6 +1,7 @@
 local servers = {
 	"sumneko_lua",
   "clangd",
+  "haskell-language-server",
   -- "rust-analyzer",
 	-- "cssls",
 	-- "html",
