@@ -1,10 +1,6 @@
 local servers = {
 	-- "sumneko_lua",
   -- "clangd",
-  -- "haskell-language-server",
-  -- "rust-analyzer",
-	-- "cssls",
-	-- "html",
 	"tsserver",
 	-- "pyright",
 	-- "bashls",
@@ -53,3 +49,5 @@ for _, server in pairs(servers) do
 
 	lspconfig[server].setup(opts)
 end
+
+lspconfig.hls.setup{}
