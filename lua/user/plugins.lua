@@ -56,15 +56,15 @@ return packer.startup(function(use)
   use { "wbthomason/packer.nvim" } -- Have packer manage itself
   use { "nvim-lua/plenary.nvim" } -- Useful lua functions used by lots of plugins
   use { "numToStr/Comment.nvim" }
-  use { "kyazdani42/nvim-web-devicons" }
-  use { "kyazdani42/nvim-tree.lua" }
+  use { "nvim-tree/nvim-web-devicons" }
+  use { "nvim-tree/nvim-tree.lua" }
   -- use { "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" }
 	-- use { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" }
   use { "nvim-lualine/lualine.nvim" }
   use { "akinsho/toggleterm.nvim" }
   use { "ahmedkhalf/project.nvim" }
   use { "lewis6991/impatient.nvim" }
-  use { "lukas-reineke/indent-blankline.nvim" }
+  -- use { "lukas-reineke/indent-blankline.nvim" }
   use { "goolord/alpha-nvim" }
 	use { "folke/which-key.nvim" }
 
@@ -84,12 +84,10 @@ return packer.startup(function(use)
   -- use { "tpope/vim-dispatch" }
 
 	-- Cmp
-  use { "hrsh7th/nvim-cmp", commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc" } -- The completion plugin
-  use { "hrsh7th/cmp-buffer", commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa" } -- buffer completions
-  use { "hrsh7th/cmp-path", commit = "447c87cdd6e6d6a1d2488b1d43108bfa217f56e1" } -- path completions
-	use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" } -- snippet completions
-	use { "hrsh7th/cmp-nvim-lsp", commit = "3cf38d9c957e95c397b66f91967758b31be4abe6" }
-	use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
+  use { "hrsh7th/nvim-cmp" } -- The completion plugin
+  use { "hrsh7th/cmp-buffer" } -- buffer completions
+  use { "hrsh7th/cmp-path" } -- path completions
+	use { "hrsh7th/cmp-nvim-lsp" }
 
 	-- Snippets
   -- use { "L3MON4D3/LuaSnip", commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84" } --snippet engine
@@ -110,25 +108,14 @@ return packer.startup(function(use)
   -- Text Search
   use { "rking/ag.vim" }
 
-  -- replace
-  use { "windwp/nvim-spectre" }
-
 	-- Treesitter
 	use {
 		"nvim-treesitter/nvim-treesitter",
+    run = ':TSUpdate'
 	}
 
 	-- Git
 	use { "lewis6991/gitsigns.nvim" }
-
-  -- Lua
-  use { "~/.config/nvim/lua/user/custom_plugins/todo.nvim", as = "todo"}
-
-  -- gistory
-  use { "vdiezel/gistory.nvim" }
-
-  -- C++
-  use { "bfrg/vim-cpp-modern" }
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
